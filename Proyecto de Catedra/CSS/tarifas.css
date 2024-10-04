@@ -1,0 +1,42 @@
+body{
+    background-color: #e6f2ff;
+}
+
+
+#detalle_tarifas{
+    margin: 0 auto;
+    padding: 2%;
+    border: 1px solid #ccc;
+}
+
+#imagen_parque_tarifa{
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+#detalle_tarifas {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: white;
+    width: 90%; 
+    text-align: center;
+    display: block; 
+}
+
+#inf_tarifas{
+    text-align: left;
+}
+
+#nota{
+    font-weight: bold;
+}
+
+
+
+
+
