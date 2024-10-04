@@ -1,0 +1,105 @@
+/* Estilos para index.html */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Avances de las secciones */
+#avances {
+    background-color: #e6f2ff;
+    text-align: center;
+}
+
+.avance {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    display: inline-block;
+    width: 80%;
+    text-align: center;
+}
+
+.avance h3 {
+    color: #003366;
+}
+
+.avance p {
+    font-size: 16px;
+}
+
+.avance-img {
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+/* Contenedor flex para centrar el botón */
+.boton-container {
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    margin-top: 15px;
+}
+
+.boton {
+    padding: 10px 20px;
+    background-color: #004080;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.boton:hover {
+    background-color: #003366;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
