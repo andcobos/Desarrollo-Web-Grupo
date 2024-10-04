@@ -1,0 +1,38 @@
+body{
+    background-color: #e6f2ff;
+}
+
+.como_llegar {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: white;
+    width: 90%; 
+    text-align: center;
+    display: block; 
+}
+
+#lista_comollegar{
+    text-align: left;
+}
+
+#lista_comollegar a.mas_info_cl {
+    color: #000;
+    text-decoration: none; 
+}
+
+#lista_comollegar a.mas_info_cl:hover {
+    color: darkblue; 
+    text-decoration: underline; 
+}
+
+#boton{
+    display: flex;
+    padding: 2% 2%;
+}
+
+#como_llegar_img{
+    padding: 10px 20px;
+    display: inline-block;
+}

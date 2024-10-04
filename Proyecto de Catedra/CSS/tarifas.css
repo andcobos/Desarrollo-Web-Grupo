@@ -15,7 +15,9 @@ body{
     height: auto;
     max-width: 400px;
     border-radius: 8px;
+    display: flex;
 }
+
 
 #detalle_tarifas {
     border: 1px solid #ccc;
@@ -30,11 +32,23 @@ body{
 
 #inf_tarifas{
     text-align: left;
+    padding-bottom: 1%;
+}
+
+#mas_informacion{
+    padding: 10px 5%;
+    text-align: justify;
+}
+
+#mas_informacion h3{
+    text-align: center;
 }
 
 #nota{
     font-weight: bold;
 }
+
+
 
 
 
