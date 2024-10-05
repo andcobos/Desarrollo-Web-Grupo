@@ -1,45 +1,32 @@
-#detalle_tarifas{
+#detalle_tarifas {
+    text-align: center;
     margin: 0 auto;
     padding: 2%;
     border: 1px solid #ccc;
-}
-
-#imagen_parque_tarifa{
-    margin: 15px auto;
-    width: 90%;
-    height: auto;
     border-radius: 10px;
-    display: flex;
-}
-
-
-#detalle_tarifas {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px 40px;
-    margin: 20px auto;
-    background-color: white;
     width: 90%;
-    text-align: center;
-    display: block;
     max-width: 1200px;
+    background-color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-#inf_tarifas{
-    text-align: left;
-    padding-bottom: 1%;
+#tabla_tarifas {
+    margin: 20px auto;
+    width: 90%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#mas_informacion{
-    padding: 10px 5%;
-    text-align: left;
+#tabla_tarifas th, #tabla_tarifas td {
+    border: 1px solid #ccc;
+    padding: 15px;
 }
 
-#mas_informacion h3{
-    text-align: center;
+#tabla_tarifas th {
+    background-color: #003366;
+    color: white;
 }
 
-#nota{
-    font-weight: bold;
+#tabla_tarifas tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
