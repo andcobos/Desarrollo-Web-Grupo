@@ -1,15 +1,3 @@
-#detalle_tarifas {
-    text-align: center;
-    margin: 0 auto;
-    padding: 2%;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 1200px;
-    background-color: white;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
 #tabla_tarifas {
     margin: 20px auto;
     width: 90%;
