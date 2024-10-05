@@ -1,37 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #e6f2ff;
-    color: #000;
-}
-
-header {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-nav {
-    background-color: #004080;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-.acerca {
+.atracciones {
     background-color: #e6f2ff;
 }
 
@@ -69,23 +36,4 @@ nav a:hover {
     display: block;
     max-width: 1200px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 1rem;
 }

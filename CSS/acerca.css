@@ -1,37 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #e6f2ff;
-    color: #000;
-}
-
-header {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-nav {
-    background-color: #004080;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-
 .acerca {
     background-color: #e6f2ff;
     padding: 60px 20px;
@@ -51,10 +17,12 @@ nav a:hover {
 }
 
 .team {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .team-member {
@@ -66,9 +34,11 @@ nav a:hover {
 }
 
 .team-member img {
-    width: 100%; 
-    height: auto;
-    max-height: 460px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 450px;
+    max-width: 300px;
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
@@ -77,18 +47,4 @@ nav a:hover {
 .team-member p {
     font-size: 1rem;
     color: #333;
-}
-
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
 }

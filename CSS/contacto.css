@@ -1,26 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color:#e6f2ff;
-    color: #000;
-}
-
-.header {
-    padding: 50px 0;
-    text-align: center;
-    color: white;
-}
-
-.header-container {
-    backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    padding: 20px 40px;
-}
-
-.site-title {
-    font-weight: bold;
-}
-
 .main-content {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -34,11 +11,6 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.left-content {
-    padding-right: 20px;
-    text-align: center;
-}
-
 .contact-form-section {
     background-color: white;
     padding: 30px;
@@ -50,7 +22,6 @@ body {
 .contact-form-section h2{
     text-align: center;
 }
-
 
 .contact-form {
     display: flex;
@@ -99,14 +70,5 @@ body {
 
 .social-media a:hover {
     color: blue;
-}
-
-footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    text-decoration: underline;
 }
