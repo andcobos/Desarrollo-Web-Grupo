@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #e6f2ff;
     color: #000;
 }
 
@@ -32,37 +32,26 @@ nav a:hover {
 }
 
 .fondo-galeria {
-    background-color: #f9f9f9;
-    padding: 60px 20px;
-}
-
-.container {
-    background-color: white;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-h2 {
-    color: #003366;
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-}
-
-p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    text-align: justify;
+    background-color: #e6f2ff;
 }
 
 .galeria {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+}
+
+.galeria-container{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px 40px;
+    margin: 20px auto;
+    background-color: white;
+    width: 90%;
+    text-align: center;
+    display: block;
+    max-width: 1200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .foto-galeria {
@@ -75,6 +64,7 @@ p {
     height: 250px;
     object-fit: cover;
     transition: transform 0.5s ease;
+    border-radius: 10px;
 }
 
 .foto-galeria:hover img {
