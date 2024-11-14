@@ -3,7 +3,7 @@
     padding: 60px 20px;
 }
 
-.acerca-container{
+.acerca-container {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px 40px;
@@ -11,13 +11,11 @@
     background-color: white;
     width: 90%;
     text-align: center;
-    display: block;
     max-width: 1200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 .team {
-    grid-template-columns: repeat(3, 1fr);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -30,21 +28,33 @@
     padding: 20px;
     text-align: center;
     border-radius: 10px;
+    box-sizing: border-box;
+    width: calc(33.333% - 40px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .team-member img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     max-height: 450px;
-    max-width: 300px;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     margin-bottom: 15px;
 }
 
 .team-member p {
     font-size: 1rem;
     color: #333;
+}
+
+@media screen and (max-width: 768px) {
+    .team-member {
+        width: calc(50% - 40px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .team-member {
+        width: 100%;
+    }
 }

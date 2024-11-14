@@ -17,9 +17,9 @@
     padding: 20px;
     text-align: center;
     border-radius: 10px;
+    box-sizing: border-box;
+    width: calc(33.333% - 40px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: auto;
-    max-width: 330px;
 }
 
 .activity img {
@@ -28,4 +28,16 @@
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .activity {
+        width: calc(50% - 40px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .activity {
+        width: 100%;
+    }
 }

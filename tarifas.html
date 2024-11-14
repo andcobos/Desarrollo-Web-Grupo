@@ -1,92 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Parque Recreativo Los Chorros</title>
+    <title>Tarifas - Parque Recreativo Los Chorros</title>
     <link rel="stylesheet" href="CSS/style_general.css">
-    <link rel="stylesheet" href="./CSS/tarifas.css">
+    <link rel="stylesheet" href="CSS/tarifas.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<header>
-    <h1>Parque Recreativo Los Chorros</h1>
-</header>
-
 <nav>
-    <a href="index.html">Inicio</a>
-    <a href="galeria.html">Galería de Imágenes</a>
-    <a href="atracciones.html">Atracciones</a>
-    <a href="tarifas.html">Tarifas</a>
-    <a href="como-llegar.html">Cómo Llegar</a>
-    <a href="contacto.html">Contacto</a>
-    <a href="acerca.html">Acerca de</a>
+    <div class="logo">Parque Recreativo Los Chorros</div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <ul class="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="atracciones.html">Atracciones</a></li>
+        <li><a href="tarifas.html">Tarifas</a></li>
+        <li><a href="como-llegar.html">Cómo Llegar</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="acerca.html">Acerca de</a></li>
+    </ul>
 </nav>
 
 <section id="inicio">
     <div class="container">
         <h2>Tarifas del Parque Recreativo Los Chorros</h2>
-        <p>El Parque Recreativo Los chorros cuenta con muchas actividades para poder disfrutar al máximo tu día.
-            Puedes visitar el parque de lunes a domingo de 8:00am a 4:00pm.</p>
+        <p>El Parque Recreativo Los Chorros cuenta con muchas actividades para poder disfrutar al máximo tu día. Puedes visitar el parque de lunes a domingo de 8:00 am a 4:00 pm.</p>
     </div>
 </section>
 
 <section>
     <div class="container">
-    <h2>Detalle de Tarifas</h2>
-    <p>Puedes comprar las entradas al parque por medio de el sitio web del Parque Recreativo Los Chorros, o puedes acercarte
-        en la entrada y pagar. Aquí te dejamos información sobre las tarifas:</p>
+        <h2>Detalle de Tarifas</h2>
+        <p>Puedes comprar las entradas al parque por medio del sitio web del Parque Recreativo Los Chorros, o puedes acercarte en la entrada y pagar. Aquí te dejamos información sobre las tarifas:</p>
 
-    <table id="tabla_tarifas">
-        <thead>
-        <tr>
-            <th>Tipo de Entrada</th>
-            <th>Precio</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Nacionales</td>
-            <td>$1.50</td>
-        </tr>
-        <tr>
-            <td>Extranjeros</td>
-            <td>$3.00</td>
-        </tr>
-        <tr>
-            <td>Niños menores de 6 años, adultos mayores de 60 años y personas con discapacidad</td>
-            <td>Gratis</td>
-        </tr>
-        </tbody>
-    </table>
+        <table id="tabla_tarifas">
+            <thead>
+            <tr>
+                <th>Tipo de Entrada</th>
+                <th>Precio</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Nacionales</td>
+                <td>$1.50</td>
+            </tr>
+            <tr>
+                <td>Extranjeros</td>
+                <td>$3.00</td>
+            </tr>
+            <tr>
+                <td>Niños menores de 6 años, adultos mayores de 60 años y personas con discapacidad</td>
+                <td>Gratis</td>
+            </tr>
+            </tbody>
+        </table>
 
-    <a class="boton" target="_blank" href="https://istu.gob.sv/producto/entradas-a-parque-recreativo-los-chorros/">Compra entradas aquí</a>
+        <a class="boton" target="_blank" href="https://istu.gob.sv/producto/entradas-a-parque-recreativo-los-chorros/">Compra entradas aquí</a>
 
-    <br><br>
+        <br><br>
 
-    <img id="imagen_parque_tarifa" src="img/foto_tarifas.png" alt="foto_tarifas">
+        <img id="imagen_parque_tarifa" src="img/foto_tarifas.png" alt="foto_tarifas">
 
+        <div id="mas_informacion">
+            <h3>Más Información</h3>
+            <ul>
+                <li>Por la compra de tu entrada al Parque Recreativo Los Chorros, tienes derecho a realizar diferentes actividades como hacer uso de las piscinas naturales, utilizar el tobogán, ocupar el área de picnic y acomodarte en las cabañas que ofrece el lugar.</li>
+                <li>Para salvadoreños: cualquiera que pertenezca a alguna de estas categorías entra gratis: adultos mayores, personas con discapacidad, estudiantes con carnet vigente (mostrando carnet), niños menores de 6 años, guías turísticos y empleados del Instituto Salvadoreño de Turismo - ISTU (mostrando carnet).</li>
+                <li>Para extranjeros: deben presentar un documento de identificación que pueda validar su residencia dentro o fuera del país los centroamericanos y extranjeros residentes y extranjeros no residentes.</li>
+            </ul>
+        </div>
 
-    <div id="mas_informacion">
-        <h3>Más Información</h3>
-        <ul>
-            <li>Por la compra de tu entrada al Parque Recreativo Los Chorros, tienes derecho a realizar diferentes actividades
-                como hacer uso de las piscinas naturales, utilizar el tobogán, ocupar el área de picnic y acomodarte en las
-                cabañas que ofrece el lugar.</li>
-            <li>Para Salvadoreños: cualquiera que peretencezca a alguna de estas categorías entra gratis: adultos mayores,
-                personas con discapacidad, estudiantes con carnet vigente (mostrando carnet), niños menores de 6 años,
-                guías turísticos y empleados del Instituto Salvadoreño de Turismo - ISTU (mostrando carnet) entran gratis.</li>
-            <li>Para extranjeros: Deben de presentar un documento de identificación que pueda validar su residencia dentro o
-                fuera del país los: centroamericanos y extranjeros residentes y extranjeros no residentes</li>
-        </ul>
-    </div>
-
-    <p id="nota">*En caso de comprar en línea tu ticket: al momento de comprar y seleccionar un tipo de entrada debe hacer
-        uso de su documento de identidad (DUI) y un correo vigente, ya que ahí se le enviara su ticket de entrada
-        para que logre validarlo en el parque correspondiente, es de carácter obligatorio que se tome en cuenta
-        que, se debe presentar un documento o identificación válida para la siguiente excepción de pago a mencionar.
-    </p>
+        <p id="nota">*En caso de comprar en línea tu ticket: al momento de comprar y seleccionar un tipo de entrada debes hacer uso de tu documento de identidad (DUI) y un correo vigente, ya que ahí se te enviará tu ticket de entrada para que logres validarlo en el parque correspondiente. Es de carácter obligatorio que se tome en cuenta que se debe presentar un documento o identificación válida para la siguiente excepción de pago a mencionar.</p>
 
     </div>
 </section>
