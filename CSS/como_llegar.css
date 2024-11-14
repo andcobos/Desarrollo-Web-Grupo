@@ -1,32 +1,21 @@
-#como_llegar_img{
-    display: block;
+#lista_comollegar {
     margin: 0 auto;
-    width: 80%;
-    max-width: 1200px;
-    height: auto;
+    padding: 0;
+    list-style: disc; 
+    text-align: center; 
+    width: fit-content; 
 }
 
-.boton{
-    display: inline-block;
-    margin-top: 1%;
-}
-
-#lista_comollegar{
-    text-align: left;
+#lista_comollegar li {
+    margin: 10px 0;
 }
 
 #lista_comollegar a.mas_info_cl {
     color: #000;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 #lista_comollegar a.mas_info_cl:hover {
-    color: darkblue; 
-    text-decoration: underline; 
-}
-
-
-#como_llegar_img{
-    padding: 10px 20px;
-    display: inline-block;
+    color: darkblue;
+    text-decoration: underline;
 }
