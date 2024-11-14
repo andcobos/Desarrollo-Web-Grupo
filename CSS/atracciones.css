@@ -25,7 +25,7 @@
     margin-bottom: 15px;
 }
 
-.atracciones-container{
+.atracciones-container {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px 40px;
@@ -36,4 +36,35 @@
     display: block;
     max-width: 1200px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .activities {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .activity {
+        padding: 15px;
+    }
+
+    .atracciones-container {
+        padding: 15px 20px;
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .activities {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .activity {
+        padding: 10px;
+    }
+
+    .atracciones-container {
+        padding: 10px 15px;
+    }
 }
