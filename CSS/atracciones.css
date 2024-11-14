@@ -45,12 +45,13 @@
 
 @media (max-width: 768px) {
     .activities {
-        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
         gap: 15px;
     }
 
     .activity {
         padding: 15px;
+        width: calc(50% - 40px);
     }
 
     .atracciones-container {
@@ -61,26 +62,16 @@
 
 @media (max-width: 480px) {
     .activities {
-        grid-template-columns: 1fr;
+        justify-content: center;
         gap: 10px;
     }
 
     .activity {
         padding: 10px;
+        width: 100%;
     }
 
     .atracciones-container {
         padding: 10px 15px;
-=======
-@media screen and (max-width: 768px) {
-    .activity {
-        width: calc(50% - 40px);
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .activity {
-        width: 100%;
->>>>>>> d6671af88077f0f98399317f696c3ff85a0bf4c0
     }
 }
