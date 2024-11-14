@@ -1,9 +1,11 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #000;
     background-color: #e6f2ff;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 header {
@@ -16,24 +18,51 @@ header {
 nav {
     background-color: #004080;
     color: white;
-    text-align: center;
-    padding: 10px;
+    padding: 0 20px;
     position: sticky;
     top: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    z-index: 20;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-nav a {
+nav .logo {
     color: white;
-    margin: 0 15px;
+    font-size: 1.5em;
+    padding: 10px 0;
+    flex-shrink: 0;
+}
+
+nav .nav-toggle {
+    display: none;
+}
+
+nav .nav-toggle-label {
+    display: none;
+}
+
+nav .nav-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav .nav-menu li {
+    margin: 0;
+}
+
+nav .nav-menu li a {
+    color: white;
     text-decoration: none;
     font-weight: bold;
+    padding: 20px 15px;
+    display: block;
 }
 
-nav a:hover {
-    text-decoration: underline;
+nav .nav-menu li a:hover {
+    background-color: #003366;
 }
 
 section {
@@ -45,14 +74,8 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
     height: 60px;
-    margin-top: auto;
 }
 
 .container {
@@ -63,9 +86,116 @@ footer {
     background-color: white;
     width: 90%;
     text-align: center;
-    display: block;
     max-width: 1200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+    nav .nav-toggle {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 102;
+    }
+
+    nav .nav-toggle-label {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 103;
+    }
+
+    nav .nav-toggle-label span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        margin: 6px 0;
+    }
+
+    nav .nav-menu {
+        display: none;
+        flex-direction: column;
+        background-color: #004080;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Position the menu immediately below the navbar */
+        left: 0;
+        z-index: 101;
+    }
+
+    nav .nav-menu li {
+        text-align: center;
+    }
+
+    nav .nav-menu li a {
+        padding: 15px;
+        border-bottom: 1px solid #003366;
+    }
+
+    nav .nav-toggle:checked ~ .nav-menu {
+        display: flex;
+    }
+
+    nav .logo {
+        padding: 10px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .container {
+        padding: 15px 20px;
+    }
+
+    nav .nav-menu li a {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav .nav-toggle-label {
+        right: 15px;
+    }
+
+    nav .nav-toggle-label span {
+        margin: 5px 0;
+    }
+
+    nav .logo {
+        padding: 10px 0;
+    }
+
+    .container {
+        padding: 10px 15px;
+    }
 }
 
 @media (max-width: 768px) {

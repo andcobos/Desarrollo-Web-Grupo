@@ -2,26 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Atracciones y Actividades</title>
     <link rel="stylesheet" href="CSS/style_general.css">
-    <link rel="stylesheet" href="./CSS/atracciones.css">
+    <link rel="stylesheet" href="CSS/atracciones.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <header>
-        <h1>Parque Recreativo Los Chorros</h1>
-    </header>
-
     <nav>
-        <a href="index.html">Inicio</a>
-        <a href="galeria.html">Galería de Imágenes</a>
-        <a href="atracciones.html">Atracciones</a>
-        <a href="tarifas.html">Tarifas</a>
-        <a href="como-llegar.html">Cómo Llegar</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="acerca.html">Acerca de</a>
+        <div class="logo">Parque Recreativo Los Chorros</div>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <ul class="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="atracciones.html">Atracciones</a></li>
+            <li><a href="tarifas.html">Tarifas</a></li>
+            <li><a href="como-llegar.html">Cómo Llegar</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="acerca.html">Acerca de</a></li>
+        </ul>
     </nav>
 
     <section id="inicio">
@@ -32,45 +36,38 @@
     </section>
 
     <section class="atracciones">
-        <div class="atracciones-container">
-
+        <div class="container">
             <div class="activities">
                 <div class="activity">
                     <img src="img/atracciones/aguas calientes.jpg" alt="Piscinas Naturales">
                     <h3>Piscinas Naturales</h3>
                     <p>Disfruta de nuestras piscinas de agua cristalina, rodeadas de la naturaleza.</p>
                 </div>
-
                 <div class="activity">
-                    <img src="img/atracciones/piscinas niños.jpg" alt="tobogan">
+                    <img src="img/atracciones/piscinas niños.jpg" alt="Tobogán">
                     <h3>Tobogán acuático</h3>
                     <p>Disfruta de los toboganes que ofrece el lugar.</p>
                 </div>
-
                 <div class="activity">
                     <img src="img/atracciones/picnic.jpg" alt="Picnic">
                     <h3>Zonas de Picnic</h3>
                     <p>Pasa un día con tu familia y amigos en nuestras áreas de picnic.</p>
                 </div>
-
                 <div class="activity">
                     <img src="img/atracciones/niños.png" alt="Infantiles">
                     <h3>Piscinas para niños</h3>
                     <p>Los más pequeños pueden disfrutar de nuestros juegos y zonas recreativas seguras.</p>
                 </div>
-
                 <div class="activity">
                     <img src="img/atracciones/cascada.jpg" alt="Cascadas">
                     <h3>Cascadas</h3>
                     <p>Maravíllate con las cascadas naturales que adornan el paisaje del parque.</p>
                 </div>
-
                 <div class="activity">
-                    <img src="img/atracciones/senderismo.jpg" alt="senderismo">
+                    <img src="img/atracciones/senderismo.jpg" alt="Senderismo">
                     <h3>Senderismo</h3>
                     <p>Explora los senderos naturales mientras disfrutas del aire fresco y vistas panorámicas.</p>
                 </div>
-
             </div>
         </div>
     </section>

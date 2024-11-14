@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Parque Recreativo Los Chorros</title>
     <link rel="stylesheet" href="CSS/style_general.css">
     <link rel="stylesheet" href="CSS/inicio.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <header>
-        <h1>Parque Recreativo Los Chorros</h1>
-    </header>
-
     <nav>
-        <a href="index.html">Inicio</a>
-        <a href="galeria.html">Galería de Imágenes</a>
-        <a href="atracciones.html">Atracciones</a>
-        <a href="tarifas.html">Tarifas</a>
-        <a href="como-llegar.html">Cómo Llegar</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="acerca.html">Acerca de</a>
+        <div class="logo">Parque Recreativo Los Chorros</div>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <ul class="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="atracciones.html">Atracciones</a></li>
+            <li><a href="tarifas.html">Tarifas</a></li>
+            <li><a href="como-llegar.html">Cómo Llegar</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="acerca.html">Acerca de</a></li>
+    </ul>
     </nav>
 
     <section id="inicio">
@@ -52,7 +56,7 @@
 
             <div class="avance">
                 <h3>Tarifas y Horarios</h3>
-                <p>Consulta nuestras tarifas y hoarios actualizados. ¡Precios especiales para niños y adultos mayores!</p>
+                <p>Consulta nuestras tarifas y horarios actualizados. ¡Precios especiales para niños y adultos mayores!</p>
                 <img src="img/tarifas.jpg" alt="Tarifas del parque" class="avance-img">
                 <div class="boton-container">
                     <a href="tarifas.html" class="boton">Ver Tarifas</a>
@@ -61,7 +65,7 @@
 
             <div class="avance">
                 <h3>Cómo llegar</h3>
-                <p>Te proporcionamos por medio de Google Maps como llegar al parque desde tu ubicación. ¡Ven y disfruta!</p>
+                <p>Te proporcionamos por medio de Google Maps cómo llegar al parque desde tu ubicación. ¡Ven y disfruta!</p>
                 <img src="img/como-llegar.jpg" alt="Cómo llegar al parque" class="avance-img">
                 <div class="boton-container">
                     <a href="como-llegar.html" class="boton">Saber Cómo Llegar</a>

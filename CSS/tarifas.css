@@ -2,7 +2,7 @@
     margin: 20px auto;
     width: 90%;
     border-collapse: collapse;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 #tabla_tarifas th, #tabla_tarifas td {
@@ -17,4 +17,10 @@
 
 #tabla_tarifas tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+@media screen and (max-width: 768px) {
+    #tabla_tarifas th, #tabla_tarifas td {
+        padding: 10px;
+    }
 }
