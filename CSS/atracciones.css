@@ -75,3 +75,30 @@
         padding: 10px 15px;
     }
 }
+
+.estado {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: default;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.abierta {
+    background-color: green;
+    color: white;
+}
+
+.cerrada {
+    background-color: red;
+    color: white;
+}
+
+.mantenimiento {
+    background-color: yellow;
+    color: black;
+}
+
