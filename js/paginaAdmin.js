@@ -5,7 +5,7 @@ const userRole = localStorage.getItem('userRole');
 const userName = localStorage.getItem('userName');
 
 if (!userRole) {
-    window.location.href = 'Login.html';
+    window.location.href = 'login.html';
 } else {
     const navItems = document.getElementById('nav-items');
     const sections = [];
@@ -35,7 +35,7 @@ if (!userRole) {
 window.logout = function logout() {
     localStorage.removeItem('userRole');
     localStorage.removeItem('userName');
-    window.location.href = 'Login.html';
+    window.location.href = 'login.html';
 }
 
 window.addEmployee = async function addEmployee() {

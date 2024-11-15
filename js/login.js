@@ -26,7 +26,7 @@ async function login() {
                 userFound = true;
                 localStorage.setItem('userRole', 'Admin');
                 localStorage.setItem('userName', data.username);
-                window.location.href = 'PaginaAdmin.html';
+                window.location.href = 'admin.html';
                 break;
             }
         }
@@ -42,7 +42,7 @@ async function login() {
                     userFound = true;
                     localStorage.setItem('userRole', 'Empleado');
                     localStorage.setItem('userName', data.username);
-                    window.location.href = 'PaginaAdmin.html';
+                    window.location.href = 'admin.html';
                     break;
                 }
             }
