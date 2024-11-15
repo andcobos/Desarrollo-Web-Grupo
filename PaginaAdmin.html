@@ -16,14 +16,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto" id="nav-items">
-                </ul>
+                <ul class="navbar-nav ms-auto" id="nav-items"></ul>
             </div>
         </div>
     </nav>
 
     <div class="container mt-5">
-        <!-- Gestión de Usuarios -->
+        <div id="alerts"></div>
+
         <section id="gestion-usuarios" class="mb-5">
             <h2 class="text-dark">Gestión de Usuarios</h2>
             <div class="card shadow-sm">
@@ -37,18 +37,17 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
+                                <th>Usuario</th>
                                 <th>Rol</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody id="employeesTableBody">
-                        </tbody>
+                        <tbody id="employeesTableBody"></tbody>
                     </table>
                 </div>
             </div>
         </section>
 
-        <!-- Modal para Agregar Empleado -->
         <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -63,14 +62,14 @@
                                 <input type="text" class="form-control" id="employeeName" placeholder="Ingrese el nombre completo">
                             </div>
                             <div class="mb-3">
+                                <label for="employeeUsername" class="form-label">Usuario</label>
+                                <input type="text" class="form-control" id="employeeUsername" placeholder="Ingrese el nombre de usuario">
+                            </div>
+                            <div class="mb-3">
                                 <label for="employeeRole" class="form-label">Rol</label>
                                 <select class="form-select" id="employeeRole">
                                     <option value="Empleado">Empleado</option>
                                 </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="employeeUsername" class="form-label">Usuario</label>
-                                <input type="text" class="form-control" id="employeeUsername" placeholder="Ingrese el nombre de usuario">
                             </div>
                             <div class="mb-3">
                                 <label for="employeePassword" class="form-label">Contraseña</label>
@@ -86,7 +85,6 @@
             </div>
         </div>
 
-        <!-- Modal para Cambiar Contraseña -->
         <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -104,10 +102,10 @@
                                 <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
                                 <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme la nueva contraseña">
                             </div>
+                            <input type="hidden" id="employeeIdToChangePassword">
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" id="employeeIdToChangePassword">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="button" class="btn btn-primary" onclick="changePassword()">Cambiar Contraseña</button>
                     </div>
@@ -115,24 +113,143 @@
             </div>
         </div>
 
-        <!-- Gestión de Atracciones -->
+        <div class="modal fade" id="confirmDeleteEmployeeModal" tabindex="-1" aria-labelledby="confirmDeleteEmployeeLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-light">
+                        <h5 class="modal-title" id="confirmDeleteEmployeeLabel">Eliminar Empleado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de que desea eliminar este empleado?</p>
+                        <input type="hidden" id="employeeIdToDelete">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="confirmDeleteEmployee()">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section id="gestion-atracciones" class="mb-5">
             <h2 class="text-dark">Gestión de Atracciones</h2>
             <div class="card shadow-sm">
-                <div class="card-header bg-light-blue text-light-gray">Administrar Atracciones</div>
+                <div class="card-header bg-light-blue text-light-gray d-flex justify-content-between align-items-center">
+                    <span>Administrar Atracciones</span>
+                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addAttractionModal">Agregar Atracción</button>
+                </div>
                 <div class="card-body">
-                    <div class="row" id="attractionsContainer">
-                        <!-- Las atracciones se cargarán aquí dinámicamente -->
-                    </div>
+                    <div class="row" id="attractionsContainer"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Gestión de Precios -->
+        <div class="modal fade" id="addAttractionModal" tabindex="-1" aria-labelledby="addAttractionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-light-blue text-light-gray">
+                        <h5 class="modal-title" id="addAttractionLabel">Agregar Nueva Atracción</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addAttractionForm">
+                            <div class="mb-3">
+                                <label for="attractionName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="attractionName" placeholder="Nombre de la atracción">
+                            </div>
+                            <div class="mb-3">
+                                <label for="attractionDescription" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="attractionDescription" rows="3" placeholder="Descripción de la atracción"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="attractionImage" class="form-label">URL de Imagen</label>
+                                <input type="text" class="form-control" id="attractionImage" placeholder="URL de la imagen">
+                            </div>
+                            <div class="mb-3">
+                                <label for="attractionStatus" class="form-label">Estado</label>
+                                <select class="form-select" id="attractionStatus">
+                                    <option value="Abierto">Abierto</option>
+                                    <option value="Cerrado">Cerrado</option>
+                                    <option value="En Mantenimiento">En Mantenimiento</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="addAttraction()">Agregar Atracción</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editAttractionModal" tabindex="-1" aria-labelledby="editAttractionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-light-blue text-light-gray">
+                        <h5 class="modal-title" id="editAttractionLabel">Editar Atracción</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editAttractionForm">
+                            <div class="mb-3">
+                                <label for="editAttractionName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="editAttractionName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editAttractionDescription" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="editAttractionDescription" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editAttractionImage" class="form-label">URL de Imagen</label>
+                                <input type="text" class="form-control" id="editAttractionImage">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editAttractionStatus" class="form-label">Estado</label>
+                                <select class="form-select" id="editAttractionStatus">
+                                    <option value="Abierto">Abierto</option>
+                                    <option value="Cerrado">Cerrado</option>
+                                    <option value="En Mantenimiento">En Mantenimiento</option>
+                                </select>
+                                <input type="hidden" id="attractionIdToEdit">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="updateAttraction()">Guardar Cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmDeleteAttractionModal" tabindex="-1" aria-labelledby="confirmDeleteAttractionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-light">
+                        <h5 class="modal-title" id="confirmDeleteAttractionLabel">Eliminar Atracción</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de que desea eliminar esta atracción?</p>
+                        <input type="hidden" id="attractionIdToDelete">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="confirmDeleteAttraction()">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section id="gestion-precios" class="mb-5">
             <h2 class="text-dark">Gestión de Precios</h2>
             <div class="card shadow-sm">
-                <div class="card-header bg-light-blue text-light-gray">Modificar Precios de Entrada</div>
+                <div class="card-header bg-light-blue text-light-gray d-flex justify-content-between align-items-center">
+                    <span>Modificar Precios de Entrada</span>
+                    <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addPriceModal">Agregar Precio</button>
+                </div>
                 <div class="card-body">
                     <h5>Precios Actuales</h5>
                     <table class="table table-striped">
@@ -140,36 +257,91 @@
                         <tr>
                             <th>Tipo de Entrada</th>
                             <th>Precio</th>
+                            <th>Acciones</th>
                         </tr>
                         </thead>
-                        <tbody id="pricesTableBody">
-                        </tbody>
+                        <tbody id="pricesTableBody"></tbody>
                     </table>
-
-                    <h5 class="mt-4">Actualizar Precios</h5>
-                    <form id="updatePricesForm">
-                        <div class="mb-3">
-                            <label for="entryType" class="form-label">Tipo de Entrada</label>
-                            <select class="form-select" id="entryType">
-                                <option value="Nacionales">Nacionales</option>
-                                <option value="Extranjeros">Extranjeros</option>
-                                <option value="Especiales">Niños, Adultos Mayores y Personas con Discapacidad</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="newPrice" class="form-label">Nuevo Precio</label>
-                            <input type="text" class="form-control" id="newPrice" placeholder="Ingrese el nuevo precio (ej. 2.50)">
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="updatePrice()">Actualizar Precio</button>
-                    </form>
                 </div>
             </div>
         </section>
 
-        <section id="salir">
-            <div class="text-center">
-                <button onclick="logout()" class="btn btn-danger">Cerrar Sesión</button>
+        <div class="modal fade" id="addPriceModal" tabindex="-1" aria-labelledby="addPriceLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-light-blue text-light-gray">
+                        <h5 class="modal-title" id="addPriceLabel">Agregar Nuevo Precio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addPriceForm">
+                            <div class="mb-3">
+                                <label for="newEntryType" class="form-label">Tipo de Entrada</label>
+                                <input type="text" class="form-control" id="newEntryType" placeholder="Tipo de entrada">
+                            </div>
+                            <div class="mb-3">
+                                <label for="newEntryPrice" class="form-label">Precio</label>
+                                <input type="text" class="form-control" id="newEntryPrice" placeholder="Precio (ej. 2.50)">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="addPrice()">Agregar Precio</button>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="modal fade" id="editPriceModal" tabindex="-1" aria-labelledby="editPriceLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-light-blue text-light-gray">
+                        <h5 class="modal-title" id="editPriceLabel">Editar Precio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editPriceForm">
+                            <div class="mb-3">
+                                <label for="editEntryType" class="form-label">Tipo de Entrada</label>
+                                <input type="text" class="form-control" id="editEntryType" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editEntryPrice" class="form-label">Precio</label>
+                                <input type="text" class="form-control" id="editEntryPrice" placeholder="Nuevo precio (ej. 2.50)">
+                                <input type="hidden" id="priceIdToEdit">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="updatePrice()">Actualizar Precio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmDeletePriceModal" tabindex="-1" aria-labelledby="confirmDeletePriceLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-light">
+                        <h5 class="modal-title" id="confirmDeletePriceLabel">Eliminar Precio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de que desea eliminar este precio?</p>
+                        <input type="hidden" id="priceIdToDelete">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="confirmDeletePrice()">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="salir" class="text-center">
+            <button onclick="logout()" class="btn btn-danger">Cerrar Sesión</button>
         </section>
     </div>
 
