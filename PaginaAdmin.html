@@ -2,30 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa; /* Fondo gris claro */
-        }
-        .bg-light-blue {
-            background-color: #007bff; /* Azul claro */
-        }
-        .text-light-gray {
-            color: #f8f9fa; /* Texto blanco */
-        }
-        .table-striped > tbody > tr:nth-of-type(odd) {
-            background-color: #e9ecef; /* Gris claro */
-        }
-        .table-striped > tbody > tr:nth-of-type(even) {
-            background-color: #f8f9fa; /* Blanco */
-        }
-        .card img {
-            height: 200px;
-            object-fit: cover;
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/admin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script type="module" src="js/firebase.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-light-blue">
@@ -35,19 +16,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-light-gray" href="#gestion-usuarios">Gestión de Usuarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light-gray" href="#gestion-atracciones">Gestión de Atracciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light-gray" href="#gestion-precios">Gestión de Precios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light-gray" href="#salir">Salir</a>
-                    </li>
+                <ul class="navbar-nav ms-auto" id="nav-items">
                 </ul>
             </div>
         </div>
@@ -63,12 +32,6 @@
                     <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">Agregar Empleado</button>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label for="buscarUsuario" class="form-label">Buscar Usuario</label>
-                        <input type="text" class="form-control" id="buscarUsuario" placeholder="Ingrese el nombre o ID del usuario">
-                    </div>
-                    <button class="btn btn-primary">Buscar</button>
-                    <hr>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -78,27 +41,7 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Juan Pérez</td>
-                                <td>Administrador</td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm">Editar</button>
-                                    <button class="btn btn-danger btn-sm">Eliminar</button>
-                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#assignCredentialsModal" onclick="setUserId(1, 'Juan Pérez')">Asignar Usuario</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>María López</td>
-                                <td>Empleado</td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm">Editar</button>
-                                    <button class="btn btn-danger btn-sm">Eliminar</button>
-                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#assignCredentialsModal" onclick="setUserId(2, 'María López')">Asignar Usuario</button>
-                                </td>
-                            </tr>
+                        <tbody id="employeesTableBody">
                         </tbody>
                     </table>
                 </div>
@@ -111,7 +54,7 @@
                 <div class="modal-content">
                     <div class="modal-header bg-light-blue text-light-gray">
                         <h5 class="modal-title" id="addEmployeeLabel">Agregar Nuevo Empleado</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body">
                         <form id="addEmployeeForm">
@@ -122,9 +65,16 @@
                             <div class="mb-3">
                                 <label for="employeeRole" class="form-label">Rol</label>
                                 <select class="form-select" id="employeeRole">
-                                    <option value="Administrador">Administrador</option>
                                     <option value="Empleado">Empleado</option>
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="employeeUsername" class="form-label">Usuario</label>
+                                <input type="text" class="form-control" id="employeeUsername" placeholder="Ingrese el nombre de usuario">
+                            </div>
+                            <div class="mb-3">
+                                <label for="employeePassword" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="employeePassword" placeholder="Ingrese la contraseña">
                             </div>
                         </form>
                     </div>
@@ -136,80 +86,43 @@
             </div>
         </div>
 
+        <!-- Modal para Cambiar Contraseña -->
+        <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-light-blue text-light-gray">
+                        <h5 class="modal-title" id="changePasswordLabel">Cambiar Contraseña</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="changePasswordForm">
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                                <input type="password" class="form-control" id="newPassword" placeholder="Ingrese la nueva contraseña">
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme la nueva contraseña">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" id="employeeIdToChangePassword">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="changePassword()">Cambiar Contraseña</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Gestión de Atracciones -->
         <section id="gestion-atracciones" class="mb-5">
             <h2 class="text-dark">Gestión de Atracciones</h2>
             <div class="card shadow-sm">
                 <div class="card-header bg-light-blue text-light-gray">Administrar Atracciones</div>
                 <div class="card-body">
-                    <div class="row">
-                        <!-- Todas las atracciones -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow-sm">
-                                <img src="assets/img/piscinas-naturales.jpg" class="card-img-top" alt="Piscinas Naturales">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Piscinas Naturales</h5>
-                                    <p class="card-text">Disfruta de nuestras piscinas de agua cristalina.</p>
-                                    <button class="btn btn-secondary btn-sm">Cerrar</button>
-                                    <button class="btn btn-warning btn-sm">Mantenimiento</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow-sm">
-                                <img src="assets/img/tobogan-acuatico.jpg" class="card-img-top" alt="Tobogán Acuático">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Tobogán Acuático</h5>
-                                    <p class="card-text">Disfruta de los toboganes que ofrece el lugar.</p>
-                                    <button class="btn btn-secondary btn-sm">Cerrar</button>
-                                    <button class="btn btn-warning btn-sm">Mantenimiento</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow-sm">
-                                <img src="assets/img/zonas-picnic.jpg" class="card-img-top" alt="Zonas de Picnic">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Zonas de Picnic</h5>
-                                    <p class="card-text">Pasa un día con tu familia en nuestras áreas de picnic.</p>
-                                    <button class="btn btn-secondary btn-sm">Cerrar</button>
-                                    <button class="btn btn-warning btn-sm">Mantenimiento</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow-sm">
-                                <img src="assets/img/piscinas-ninos.jpg" class="card-img-top" alt="Piscinas para niños">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Piscinas para Niños</h5>
-                                    <p class="card-text">Los más pequeños pueden disfrutar de zonas recreativas.</p>
-                                    <button class="btn btn-secondary btn-sm">Cerrar</button>
-                                    <button class="btn btn-warning btn-sm">Mantenimiento</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow-sm">
-                                <img src="assets/img/cascadas.jpg" class="card-img-top" alt="Cascadas">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Cascadas</h5>
-                                    <p class="card-text">Maravíllate con las cascadas naturales del parque.</p>
-                                    <button class="btn btn-secondary btn-sm">Cerrar</button>
-                                    <button class="btn btn-warning btn-sm">Mantenimiento</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow-sm">
-                                <img src="assets/img/senderismo.jpg" class="card-img-top" alt="Senderismo">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Senderismo</h5>
-                                    <p class="card-text">Explora senderos mientras disfrutas del aire fresco.</p>
-                                    <button class="btn btn-secondary btn-sm">Cerrar</button>
-                                    <button class="btn btn-warning btn-sm">Mantenimiento</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row" id="attractionsContainer">
+                        <!-- Las atracciones se cargarán aquí dinámicamente -->
                     </div>
                 </div>
             </div>
@@ -221,32 +134,18 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-light-blue text-light-gray">Modificar Precios de Entrada</div>
                 <div class="card-body">
-                    <!-- Tabla de Precios -->
                     <h5>Precios Actuales</h5>
                     <table class="table table-striped">
                         <thead>
-                            <tr>
-                                <th>Tipo de Entrada</th>
-                                <th>Precio</th>
-                            </tr>
+                        <tr>
+                            <th>Tipo de Entrada</th>
+                            <th>Precio</th>
+                        </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Nacionales</td>
-                                <td>$1.50</td>
-                            </tr>
-                            <tr>
-                                <td>Extranjeros</td>
-                                <td>$3.00</td>
-                            </tr>
-                            <tr>
-                                <td>Niños menores de 6 años, adultos mayores de 60 años y personas con discapacidad</td>
-                                <td>Gratis</td>
-                            </tr>
+                        <tbody id="pricesTableBody">
                         </tbody>
                     </table>
 
-                    <!-- Formulario para Actualizar Precios -->
                     <h5 class="mt-4">Actualizar Precios</h5>
                     <form id="updatePricesForm">
                         <div class="mb-3">
@@ -269,66 +168,12 @@
 
         <section id="salir">
             <div class="text-center">
-                <a href="#" class="btn btn-danger">Cerrar Sesión</a>
+                <button onclick="logout()" class="btn btn-danger">Cerrar Sesión</button>
             </div>
         </section>
     </div>
 
-    <script>
-        // Gestión de Usuarios
-        function setUserId(userId, userName) {
-            currentUserId = userId;
-            document.getElementById('assignCredentialsLabel').innerText = `Asignar Usuario y Contraseña a ${userName}`;
-            document.getElementById('userId').value = userId;
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-        }
-
-        function assignCredentials() {
-            const userId = document.getElementById('userId').value;
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (!username || !password) {
-                alert('Por favor, complete todos los campos.');
-                return;
-            }
-
-            alert(`Usuario y contraseña asignados:\nUsuario: ${username}\nContraseña: ${password}`);
-            const modal = document.getElementById('assignCredentialsModal');
-            const bootstrapModal = bootstrap.Modal.getInstance(modal);
-            bootstrapModal.hide();
-        }
-
-        function addEmployee() {
-            const name = document.getElementById('employeeName').value;
-            const role = document.getElementById('employeeRole').value;
-
-            if (!name) {
-                alert('Por favor, ingrese el nombre del empleado.');
-                return;
-            }
-
-            alert(`Empleado agregado:\nNombre: ${name}\nRol: ${role}`);
-            const modal = document.getElementById('addEmployeeModal');
-            const bootstrapModal = bootstrap.Modal.getInstance(modal);
-            bootstrapModal.hide();
-        }
-
-        // Gestión de Precios
-        function updatePrice() {
-            const entryType = document.getElementById('entryType').value;
-            const newPrice = document.getElementById('newPrice').value;
-
-            if (!newPrice || isNaN(newPrice) || parseFloat(newPrice) < 0) {
-                alert('Por favor, ingrese un precio válido.');
-                return;
-            }
-
-            alert(`El precio para "${entryType}" ha sido actualizado a $${parseFloat(newPrice).toFixed(2)}`);
-        }
-    </script>
-
+    <script type="module" src="js/paginaAdmin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
