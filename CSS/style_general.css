@@ -238,3 +238,37 @@ footer {
         padding: 10px 15px;
     }
 }
+
+/* Sección Hero con Imagen Grande y Efecto Oscuro */
+#hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* La imagen ahora ocupará el 100% de la altura de la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%); /* Oscurece la imagen para mejorar la legibilidad del texto */
+}
+
+.hero-text {
+    position: absolute;
+    text-align: center;
+    color: white;
+}
+
+.hero-text h2 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
